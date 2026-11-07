@@ -91,25 +91,65 @@ float ShellExit(float radialDot, float altitude)
     return difference / max(0.0001, sqrt(max(0.0, radialDot * radialDot + difference)) + radialDot);
 }
 
+// Hash integer world-space cells directly, so the wisps don't repeat at an atlas boundary.
+float CirrusHash(float2 cell)
+{
+    float3 h = frac(float3(cell.xyx) * float3(0.1031, 0.1030, 0.0973));
+    h += dot(h, h.yzx + 33.33);
+    return frac((h.x + h.y) * h.z);
+}
+
+float CirrusNoise(float2 position)
+{
+    float2 cell = floor(position);
+    float2 f = position - cell;
+    f = f * f * (3.0 - 2.0 * f);
+    return lerp(lerp(CirrusHash(cell), CirrusHash(cell + float2(1.0, 0.0)), f.x),
+                lerp(CirrusHash(cell + float2(0.0, 1.0)), CirrusHash(cell + 1.0), f.x), f.y);
+}
+
+float CirrusDensity(float3 p, float height, float2 flow, float scale, float sampleWidth, float cover)
+{
+    float2 position = p.xz - flow * 1.68;
+    // Rotate the basis, then bend the wisps across the wind axis over several kilometres.
+    float2 axis = float2(0.82, 0.57236352);
+    float2 local = float2(dot(position, axis), dot(position, float2(-axis.y, axis.x)));
+    float bend = CirrusNoise(local * 0.065 + 7.1) - 0.5;
+    local.y += bend * 9.0 + (height - 0.5) * 0.8;
+
+    // The body makes irregular patches. Faster crosswind variation draws finer filaments.
+    float body = CirrusNoise(local * float2(0.12, 0.22) * scale);
+    float filament = CirrusNoise(local * float2(0.21, 0.82) * scale + float2(13.4, 8.9));
+    filament = lerp(filament, 0.5, smoothstep(0.15, 0.85, sampleWidth * scale));
+
+    // Compress world coordinates into the blue mask once. Its contribution sets broad coverage,
+    // while the world-space noise supplies the wisp contours at every distance.
+    float2 maskUv = 0.5 + 0.42 * position / (30.0 + abs(position));
+    float mask = WeatherMap.SampleLevel(LinearClamp, maskUv, 0).b;
+    float shape = body * 0.67 + filament * 0.23 + mask * 0.10;
+    float cutoff = lerp(0.76, 0.32, saturate(cover));
+    float envelope = smoothstep(0.0, 0.24, height) * (1.0 - smoothstep(0.58, 1.0, height));
+    return smoothstep(cutoff, cutoff + 0.29, shape) * envelope;
+}
+
 // Return a unitless density for one point in the cloud shell.
 // height runs from 0 at the shell base to 1 at its top. Layer indices 0, 1, and 2 are stratus, cumulus, and cirrus.
 // sampleWidth is the ray step length used to suppress details that long steps cannot resolve.
 float CloudDensity(float3 p, float height, int layer, float2 flow, float scale, float sampleWidth)
 {
-    // Stretch each layer horizontally and give the upper layers different wind speeds.
-    float2 stretch = layer == 0 ? float2(0.78, 1.12) :
-                     layer == 1 ? float2(1.0, 1.0) : float2(0.83, 1.16);
-    float2 wind = flow * (layer == 0 ? 0.72 : layer == 1 ? 1.0 : 1.68);
+    if (layer == 2)
+        return CirrusDensity(p, height, flow, scale, sampleWidth, CloudCover);
+
+    // Stretch the lower layers horizontally and keep their existing wind and coverage mapping.
+    float2 stretch = layer == 0 ? float2(0.78, 1.12) : float2(1.0, 1.0);
+    float2 wind = flow * (layer == 0 ? 0.72 : 1.0);
     float2 position = (p.xz - wind) * stretch;
     float3 noise = VolumeNoise(float3(position.x, p.y * 1.34, position.y) * (0.20 * scale)
                               + float3(0.17, 0.31, 0.53) * layer);
-    // Mirror the large-scale coverage map at tile boundaries. Small noise offsets fray the cirrus shape.
     float2 mapUv = position / 24.0 + float2(0.41, 0.57);
-    if (layer == 2)
-        mapUv += (noise.rg - 0.5) * 0.030;
     mapUv = 1.0 - abs(frac(mapUv * 0.5) * 2.0 - 1.0);
     float3 weather = WeatherMap.SampleLevel(LinearClamp, mapUv, 0).rgb;
-    float shape = layer == 0 ? weather.g : layer == 1 ? weather.r : weather.b;
+    float shape = layer == 0 ? weather.g : weather.r;
     // Ease density in and out at the shell boundaries to avoid flat, hard cuts.
     float envelope = smoothstep(0.0, 0.16, height) * (1.0 - smoothstep(layer == 1 ? 0.48 : 0.72, 1.0, height));
     // Filter fine density structure when a grazing ray spans more than a detail cell.
@@ -120,9 +160,8 @@ float CloudDensity(float3 p, float height, int layer, float2 flow, float scale, 
     // Higher cover lowers the density cutoff. The coverage map gives the cloud its broad shape,
     // while the higher-frequency noise removes material from the edges.
     float cutoff = layer == 0 ? lerp(0.73, 0.30, saturate(CloudCover)) :
-                   layer == 1 ? lerp(0.76, 0.36, saturate(CloudCover)) :
-                                lerp(0.69, 0.26, saturate(CloudCover));
-    float weatherWeight = layer == 0 ? 0.71 : layer == 1 ? 0.56 : 0.64;
+                                lerp(0.76, 0.36, saturate(CloudCover));
+    float weatherWeight = layer == 0 ? 0.71 : 0.56;
     float body = lerp(coarse, shape, weatherWeight);
     float erosion = (1.0 - detail) * (layer == 1 ? 0.115 : 0.052) + (1.0 - wisps) * 0.035;
     return saturate((body - cutoff - erosion + (envelope - 1.0) * 0.18) * 5.2) * envelope;
@@ -197,7 +236,8 @@ void IntegrateLayer(float3 ray, float radialDot, float3 sun,
     float nominalStep = layer == 2 ? 0.047 : 0.035;
     float stepSize = max(nominalStep, (t1 - t0) / maxSteps);
     int stepCount = min(maxSteps, (int)ceil((t1 - t0) / stepSize));
-    float extinction = layer == 0 ? 6.5 : layer == 1 ? 4.1 : 3.0;
+    // Keep the high wisps translucent even where the coverage patches overlap.
+    float extinction = layer == 0 ? 6.5 : layer == 1 ? 4.1 : 1.45;
     float2 flow = WindOffset * 20.0;
     float scale = max(0.15, CloudScale / 9.0);
     // Precompute the sun-facing glow and solar elevation weights once per ray.
@@ -223,7 +263,10 @@ void IntegrateLayer(float3 ray, float radialDot, float3 sun,
         float density = CloudDensity(p, height, layer, flow, scale, stepSize);
         density *= strength * saturate(CloudTint.a) * smoothstep(0.0, 0.15, CloudCover);
         // Fade the layer before its distance limit and skip lighting for effectively empty samples.
-        density *= 1.0 - smoothstep(maxDistance * 0.49, maxDistance, distance);
+        // Thin cirrus loses contrast sooner along the long path through horizon haze.
+        float fadeStart = maxDistance * (layer == 2 ? 0.21 : 0.49);
+        float fadeEnd = maxDistance * (layer == 2 ? 0.68 : 1.0);
+        density *= 1.0 - smoothstep(fadeStart, fadeEnd, distance);
         if (density < 0.0003)
             continue;
 
