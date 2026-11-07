@@ -1,0 +1,100 @@
+{
+  "FormatVersion": 3,
+  "Id": "1a48f167-0b03-5cda-9910-37274ba656db",
+  "Description": "Convert the HDR panorama to cubemaps for the visible sky dome and SetEnvironment lighting.",
+  "InputUis": [
+    {
+      "InputId": "7ea0d690-a238-5fae-80f2-1c606efaa91a",
+      "Position": {
+        "X": 84.50839,
+        "Y": 120.36841
+      }
+    }
+  ],
+  "SymbolChildUis": [
+    {
+      "ChildId": "cb8a2a20-5a03-541c-946f-e06f91839992",
+      "SymbolName": "Lib.render.shading.TextureToCubeMap",
+      "Position": {
+        "X": 310.7458,
+        "Y": 86.91406
+      }
+    },
+    {
+      "ChildId": "e94059c8-8bbc-51b1-8bfc-6baff7276337",
+      "SymbolName": "Lib.mesh.generate.SphereMesh",
+      "Position": {
+        "X": 310.7458,
+        "Y": 48.620056
+      }
+    },
+    {
+      "ChildId": "a9941882-3c68-5ebf-934a-cb61431cd526",
+      "SymbolName": "Lib.mesh.draw.DrawMeshUnlit",
+      "Position": {
+        "X": 480.0,
+        "Y": 50.0
+      }
+    },
+    {
+      "ChildId": "490c6a1e-b85a-5031-b9de-78345864cff6",
+      "SymbolName": "Lib.render.shading.TextureToCubeMap",
+      "Position": {
+        "X": 480.0,
+        "Y": 138.89282
+      }
+    }
+  ],
+  "OutputUis": [
+    {
+      "OutputId": "f1096e1e-4929-5c3f-8452-0e8dafdcbe01",
+      "Position": {
+        "X": 730.0,
+        "Y": 51.906067
+      }
+    },
+    {
+      "OutputId": "76b3a30c-681f-5ad2-ba43-6cbd31775736",
+      "Position": {
+        "X": 730.0,
+        "Y": 137.67407
+      }
+    }
+  ],
+  "Settings": {
+    "OutputWindows": [
+      {
+        "ShowGizmos": "On",
+        "TransformGizmoMode": "Move",
+        "BackgroundColor": [
+          0.1,
+          0.1,
+          0.1,
+          1.0
+        ],
+        "CameraControlMode": "AutoUseFirstCam",
+        "CameraPosition": [
+          0.0,
+          0.0,
+          1.5209091
+        ],
+        "CameraTarget": [
+          -0.08208847,
+          -0.075134315,
+          0.0040767635
+        ],
+        "CameraRoll": 0.0,
+        "CameraSpeed": 1.0,
+        "ResolutionTitle": "1080p",
+        "ResolutionWidth": 1920,
+        "ResolutionHeight": 1080,
+        "ResolutionUseAsAspectRatio": false,
+        "IsPinned": false,
+        "PinnedInstancePath": [],
+        "PinnedOutputId": "05c886f7-2c2c-4fe8-8b66-d6967dc43367",
+        "PinnedEntityKind": "None",
+        "PinnedEntityId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  }
+}

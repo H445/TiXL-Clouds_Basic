@@ -1,0 +1,121 @@
+{
+  "FormatVersion": 3,
+  "Id": "3d890761-b88f-57e2-9f1d-7ffba0349e5a"/*CloudShaderParameters*/,
+  "Description": "Pack the twelve shader constants in the order declared by CloudView in CloudVolume.hlsl.",
+  "InputUis": [
+    {
+      "InputId": "150fd70b-72f9-526b-9511-88c470a41590"/*CirrusBaseKm*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 432.0
+      }
+    },
+    {
+      "InputId": "2116c791-d420-5e0f-b7f3-a258e76b321d"/*TimeOfDay*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 478.0
+      }
+    },
+    {
+      "InputId": "43bf3d6f-18d7-5c36-a027-b5e125daa8cd"/*SunRadiance*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 158.0
+      }
+    },
+    {
+      "InputId": "49e71232-6094-5d1d-abd6-5631fb81fe06"/*CloudTint*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 210.0
+      }
+    },
+    {
+      "InputId": "65a4a41f-2e56-5b91-b3be-702b7256fdf2"/*StratusBaseKm*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 340.0
+      }
+    },
+    {
+      "InputId": "7d777362-8500-5225-9f9a-16586fddb294"/*CloudScale*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 112.0
+      }
+    },
+    {
+      "InputId": "b93ef9b4-8bd4-5abd-81d8-5bfa5c581fcb"/*CumulusBaseKm*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 386.0
+      }
+    },
+    {
+      "InputId": "f92c56de-b2b2-58f1-b271-97f5b8de73c1"/*SunPosition*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 30.0
+      }
+    }
+  ],
+  "SymbolChildUis": [
+    {
+      "ChildId": "5b80bf50-f7ca-5632-9a79-952c285b17fc",
+      "SymbolName": "Lib.numbers.vec4.Vector4Components",
+      "SectionId": "c4394d43-6055-5766-90f6-88ec8f65b205",
+      "Position": {
+        "X": 225.0,
+        "Y": 190.0
+      }
+    },
+    {
+      "ChildId": "b6263e25-5b96-55e4-84bf-837196700c57",
+      "SymbolName": "Lib.numbers.vec2.Vector2Components",
+      "SectionId": "c4394d43-6055-5766-90f6-88ec8f65b205",
+      "Position": {
+        "X": 225.0,
+        "Y": 30.0
+      }
+    },
+    {
+      "ChildId": "c5e5dffc-e0a8-5bf0-9ae2-52508cefe4c6",
+      "SymbolName": "Lib.render._dx11.api.FloatsToBuffer",
+      "SectionId": "c4394d43-6055-5766-90f6-88ec8f65b205",
+      "Position": {
+        "X": 520.0,
+        "Y": 30.0
+      }
+    }
+  ],
+  "OutputUis": [
+    {
+      "OutputId": "501752b6-0bbb-5ed1-a71a-964016e01427"/*SettingsBuffer*/,
+      "Position": {
+        "X": 770.0,
+        "Y": 30.0
+      }
+    }
+  ],
+  "Sections": [
+    {
+      "Id": "c4394d43-6055-5766-90f6-88ec8f65b205",
+      "Title": "Shader constants in HLSL order",
+      "Color": {
+        "X": 0.52,
+        "Y": 0.66,
+        "Z": 0.78,
+        "W": 1.0
+      },
+      "Position": {
+        "X": -45.0,
+        "Y": -40.0
+      },
+      "Size": {
+        "X": 975.0,
+        "Y": 570.0
+      }
+    }
+  ]
+}

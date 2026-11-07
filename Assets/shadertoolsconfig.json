@@ -1,0 +1,36 @@
+{
+  "root": true,
+  "hlsl.preprocessorDefinitions": [],
+  "hlsl.additionalIncludeDirectories": [
+    ".",
+    "C:/Users/u4ici/OneDrive/Documents/TiXL4.4-alpha/Clouds_Basic/Assets",
+    "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Examples/Assets/shaders/",
+    "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Io/Assets/shaders/",
+    "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Lib/Assets/shaders/",
+    "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Mediapipe/Assets/shaders/",
+    "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Ndi/Assets/shaders/",
+    "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Skills/Assets/shaders/",
+    "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Spout/Assets/shaders/",
+    "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/TypeOperators/Assets/shaders/",
+    "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Unsplash/Assets/shaders/",
+    "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Video/Assets/shaders/",
+    "C:/Users/u4ici/OneDrive/Documents/TiXL4.4-alpha/Clouds/Assets/shaders/",
+    "C:/Users/u4ici/OneDrive/Documents/TiXL4.4-alpha/Clouds_Basic/Assets/shaders/",
+    "C:/Users/u4ici/OneDrive/Documents/TiXL4.4-alpha/MyProject/Assets/shaders/"
+  ],
+  "hlsl.virtualDirectoryMappings": {
+    "/H445.Clouds_Basic": "C:/Users/u4ici/OneDrive/Documents/TiXL4.4-alpha/Clouds_Basic/Assets/shaders/",
+    "/Examples": "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Examples/Assets/shaders/",
+    "/Io": "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Io/Assets/shaders/",
+    "/Lib": "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Lib/Assets/shaders/",
+    "/Mediapipe": "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Mediapipe/Assets/shaders/",
+    "/t3.ndi": "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Ndi/Assets/shaders/",
+    "/Skills": "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Skills/Assets/shaders/",
+    "/t3.spout": "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Spout/Assets/shaders/",
+    "/Types": "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/TypeOperators/Assets/shaders/",
+    "/t3.unsplash": "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Unsplash/Assets/shaders/",
+    "/Video": "C:/Program Files/TiXL/TiXL 4.4.0.4/Operators/Video/Assets/shaders/",
+    "/H445.Clouds": "C:/Users/u4ici/OneDrive/Documents/TiXL4.4-alpha/Clouds/Assets/shaders/",
+    "/H445.MyProject": "C:/Users/u4ici/OneDrive/Documents/TiXL4.4-alpha/MyProject/Assets/shaders/"
+  }
+}

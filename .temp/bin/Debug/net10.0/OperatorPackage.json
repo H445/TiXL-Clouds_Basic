@@ -1,0 +1,11 @@
+﻿{
+    "HomeGuid": "2650e132-6de9-47d5-bf8b-61a2d85806bb", 
+    "PackageId": "6885682c-06be-4dad-910e-fc76b13fc512",
+    "RootNamespace": "H445.Clouds_Basic",
+    "AssemblyFileName": "H445.Clouds_Basic",
+    "Version": "1.0.0",
+    "EditorVersion": "4.4.0",
+    "IsEditorOnly": "false",
+    "OperatorPackages": [
+    ]
+}

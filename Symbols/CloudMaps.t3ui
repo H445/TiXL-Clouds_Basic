@@ -1,0 +1,102 @@
+{
+  "FormatVersion": 3,
+  "Id": "c6af4e07-0d5a-5bf7-8b8b-c0ba90b1a3d0",
+  "Description": "Generate one coverage channel per cloud layer and apply a wind offset in the shader.",
+  "InputUis": [
+    {
+      "InputId": "f8a6e0cf-e880-5871-bd98-08719313ffd0",
+      "Position": {
+        "X": -30.0,
+        "Y": 124.0
+      }
+    },
+    {
+      "InputId": "8d9a41b4-9790-5953-b3e3-9b559c013c9f",
+      "Position": {
+        "X": -30.0,
+        "Y": 24.0
+      }
+    },
+    {
+      "InputId": "f582122c-9544-58bd-a540-414e1fcfa1c4",
+      "Position": {
+        "X": -30.0,
+        "Y": 74.0
+      }
+    }
+  ],
+  "SymbolChildUis": [
+    {
+      "ChildId": "7d4bd71b-bf6a-5ae5-9c71-3cd41d9bbab6",
+      "SymbolName": "Lib.image.generate.noise.FractalNoise",
+      "Position": {
+        "X": 455.0,
+        "Y": 0.0
+      }
+    },
+    {
+      "ChildId": "500474e4-62d7-5364-b13b-b0471a0dc79b",
+      "SymbolName": "Lib.numbers.vec2.ScaleVector2",
+      "Position": {
+        "X": 455.0,
+        "Y": 360.0
+      }
+    },
+    {
+      "ChildId": "db36a5d5-e9e5-5928-963f-f446e448b2fe",
+      "SymbolName": "Lib.numbers.anim.time.Time",
+      "Position": {
+        "X": 235.0,
+        "Y": 360.0
+      }
+    },
+    {
+      "ChildId": "8a87c796-e0ac-5db5-9b0a-58b949c25095",
+      "SymbolName": "Lib.render._dx11.api.SrvFromTexture2d",
+      "Position": {
+        "X": 895.0,
+        "Y": 100.0
+      }
+    },
+    {
+      "ChildId": "ace17aee-9a71-5b34-b142-dc1772448455",
+      "SymbolName": "Lib.image.generate.noise.FractalNoise",
+      "Position": {
+        "X": 455.0,
+        "Y": 192.0
+      }
+    },
+    {
+      "ChildId": "80d5ae26-2736-5ac3-a49e-2ab6fea5cfa1",
+      "SymbolName": "Lib.image.use.Combine3Images",
+      "Position": {
+        "X": 675.0,
+        "Y": 100.0
+      }
+    },
+    {
+      "ChildId": "fadd86ed-61d0-5164-8d9e-01d6e9bc9cf0",
+      "SymbolName": "Lib.image.generate.noise.FractalNoise",
+      "Position": {
+        "X": 455.0,
+        "Y": 96.0
+      }
+    }
+  ],
+  "OutputUis": [
+    {
+      "OutputId": "25780506-c41d-5ead-a49b-872399f78c93",
+      "Position": {
+        "X": 1145.0,
+        "Y": 90.0
+      }
+    },
+    {
+      "OutputId": "a5ded78b-b621-5ed0-96b7-690d8af6bd90",
+      "Position": {
+        "X": 1145.0,
+        "Y": 154.0
+      }
+    }
+  ]
+}

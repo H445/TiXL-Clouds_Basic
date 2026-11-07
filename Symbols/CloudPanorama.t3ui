@@ -1,0 +1,226 @@
+{
+  "FormatVersion": 3,
+  "Id": "7cb776ae-9f57-5215-bf72-c39786102278"/*CloudPanorama*/,
+  "Description": "Render the HDR equirectangular panorama from a daylight gradient, a 3D noise atlas and the cloud coverage map.",
+  "InputUis": [
+    {
+      "InputId": "0a8096da-8161-51b1-9528-a6247718a17b"/*CirrusBaseKm*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 548.0
+      }
+    },
+    {
+      "InputId": "0c3bb63d-36f2-58f6-a3cc-7b1fd18da5e0"/*SunRadiance*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 356.0
+      }
+    },
+    {
+      "InputId": "14de6c76-0d59-5669-9449-e96da4de834b"/*CumulusBlend*/,
+      "Position": {
+        "X": 445.0,
+        "Y": 18.0
+      }
+    },
+    {
+      "InputId": "3b6a9fbb-9e90-5d56-9fbf-9c24e2d229fb"/*StratusBaseKm*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 452.0
+      }
+    },
+    {
+      "InputId": "510a1268-2137-5ef2-8b42-c5d995757c96"/*CloudCoverageMap*/,
+      "Position": {
+        "X": 445.0,
+        "Y": 210.0
+      }
+    },
+    {
+      "InputId": "5e850083-ab76-55b2-b062-896bd39ffb77"/*StratusBlend*/,
+      "Position": {
+        "X": 445.0,
+        "Y": 66.0
+      }
+    },
+    {
+      "InputId": "6ce6bd3c-6ca3-51e6-8f58-a9d3281bb175"/*CloudScale*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 308.0
+      }
+    },
+    {
+      "InputId": "7237dfcf-84b1-5eac-86d8-633173eeef46"/*SunPosition*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 260.0
+      }
+    },
+    {
+      "InputId": "7944bef1-4f13-55b8-8474-34759b4ae891"/*WindOffset*/,
+      "Position": {
+        "X": 445.0,
+        "Y": 162.0
+      }
+    },
+    {
+      "InputId": "90161fef-c94a-53e1-81c9-0692a01d1623"/*CloudCover*/,
+      "Position": {
+        "X": 445.0,
+        "Y": -30.0
+      }
+    },
+    {
+      "InputId": "9f49071d-8eab-5ec9-89cd-2a58d7a1981c"/*CloudTint*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 404.0
+      }
+    },
+    {
+      "InputId": "a6607b2d-618c-5b7d-aeb2-58373efcd777"/*CirrusBlend*/,
+      "Position": {
+        "X": 445.0,
+        "Y": 114.0
+      }
+    },
+    {
+      "InputId": "b6d6d8e4-6d9f-500a-b774-ad8ab2aba047"/*TimeOfDay*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 596.0
+      }
+    },
+    {
+      "InputId": "bccf60a5-83a6-5acd-9e57-13dcc1ffe3c8"/*CumulusBaseKm*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 500.0
+      }
+    }
+  ],
+  "SymbolChildUis": [
+    {
+      "ChildId": "9a23f165-fe25-5736-8be8-9e0c042ebfab",
+      "SymbolName": "Lib.image.use.CustomPixelShader",
+      "SectionId": "0a3e6b0e-97b7-5bfa-b211-f79571268da7",
+      "Position": {
+        "X": 780.0,
+        "Y": 280.0
+      }
+    },
+    {
+      "ChildId": "c1987d7b-0271-5b3d-9eb1-ce1803ea1574",
+      "SymbolName": "Lib.image.generate.basic.LinearGradient",
+      "SectionId": "b9ab4a88-6f87-58b6-9ba1-85170f08836f",
+      "Position": {
+        "X": 445.0,
+        "Y": 510.0
+      }
+    },
+    {
+      "ChildId": "c9f86f9c-7726-564e-adab-80ac412468e7",
+      "SymbolName": "H445.Clouds_Basic.CloudShaderParameters",
+      "SectionId": "e394b720-7c91-5339-8edd-adc62ddea15d",
+      "Position": {
+        "X": 225.0,
+        "Y": 260.0
+      }
+    },
+    {
+      "ChildId": "d1e44542-1c08-553e-87de-97b26c1cac66",
+      "SymbolName": "Lib.image.generate.load.LoadImage",
+      "SectionId": "b9ab4a88-6f87-58b6-9ba1-85170f08836f",
+      "Position": {
+        "X": 445.0,
+        "Y": 630.0
+      }
+    }
+  ],
+  "OutputUis": [
+    {
+      "OutputId": "84c66ea5-1f22-5f5c-b148-beb02cc23c0d"/*Panorama*/,
+      "Position": {
+        "X": 1030.0,
+        "Y": 280.0
+      }
+    }
+  ],
+  "Sections": [
+    {
+      "Id": "0a3e6b0e-97b7-5bfa-b211-f79571268da7",
+      "Title": "04  HDR panorama",
+      "Color": {
+        "X": 0.52,
+        "Y": 0.66,
+        "Z": 0.78,
+        "W": 1.0
+      },
+      "Position": {
+        "X": 735.0,
+        "Y": 215.0
+      },
+      "Size": {
+        "X": 465.0,
+        "Y": 460.0
+      }
+    },
+    {
+      "Id": "3ad06f7f-a49e-561c-8038-9e02bdacb10b",
+      "Title": "02  Cloud mix and wind",
+      "Color": {
+        "X": 0.52,
+        "Y": 0.66,
+        "Z": 0.78,
+        "W": 1.0
+      },
+      "Position": {
+        "X": 400.0,
+        "Y": -90.0
+      },
+      "Size": {
+        "X": 305.0,
+        "Y": 370.0
+      }
+    },
+    {
+      "Id": "b9ab4a88-6f87-58b6-9ba1-85170f08836f",
+      "Title": "03  Atmosphere textures",
+      "Color": {
+        "X": 0.52,
+        "Y": 0.66,
+        "Z": 0.78,
+        "W": 1.0
+      },
+      "Position": {
+        "X": 400.0,
+        "Y": 450.0
+      },
+      "Size": {
+        "X": 305.0,
+        "Y": 265.0
+      }
+    },
+    {
+      "Id": "e394b720-7c91-5339-8edd-adc62ddea15d",
+      "Title": "01  Shader settings",
+      "Color": {
+        "X": 0.52,
+        "Y": 0.66,
+        "Z": 0.78,
+        "W": 1.0
+      },
+      "Position": {
+        "X": -45.0,
+        "Y": 192.0
+      },
+      "Size": {
+        "X": 460.0,
+        "Y": 480.0
+      }
+    }
+  ]
+}

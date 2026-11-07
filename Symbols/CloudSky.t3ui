@@ -1,0 +1,331 @@
+{
+  "FormatVersion": 3,
+  "Id": "3508d042-e321-5fce-8dbc-1d33ef6d4bb7"/*CloudSky*/,
+  "Description": "Build a sunlit, volumetric cloud sky. Plug an optional scene into Scene to light it through SetEnvironment.",
+  "InputUis": [
+    {
+      "InputId": "13c5f537-fa82-5e56-8905-2352468f0a2c"/*SunPosition*/,
+      "Position": {
+        "X": 340.0,
+        "Y": 668.0
+      },
+      "GroupTitle": "Sun and sky",
+      "Description": "Horizontal rotation and maximum elevation of the sun path."
+    },
+    {
+      "InputId": "16a25821-2f08-5c3f-8b13-f02d0fe119bb"/*CloudTint*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 265.0
+      },
+      "GroupTitle": "Clouds",
+      "Description": "RGB tint and overall opacity of all three cloud layers."
+    },
+    {
+      "InputId": "26374c83-3dff-5428-9755-ca46b9ac0d55"/*CirrusBlend*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 169.0
+      },
+      "GroupTitle": "Clouds",
+      "Description": "Cirrus layer opacity. Blend it with either of the other cloud types.",
+      "Min": 0.0,
+      "Max": 1.0,
+      "Scale": 0.01,
+      "ClampMin": true,
+      "ClampMax": true
+    },
+    {
+      "InputId": "26419c8d-72f0-54e6-8efe-bbad9897defc"/*Scene*/,
+      "Position": {
+        "X": 880.0,
+        "Y": 375.7904
+      },
+      "GroupTitle": "Scene",
+      "Description": "Optional geometry to draw under SetEnvironment lighting."
+    },
+    {
+      "InputId": "28178983-fd8d-5596-8602-f39c9b3902c0"/*UpdateLive*/,
+      "Position": {
+        "X": 880.0,
+        "Y": 452.2765
+      },
+      "GroupTitle": "Lighting",
+      "Description": "Refreshes image-based lighting as the sky changes. Disable to hold the lighting capture while the visible sky stays animated."
+    },
+    {
+      "InputId": "3eff78b4-6d34-5731-9946-08c9fe32d79b"/*TimeOfDay*/,
+      "Position": {
+        "X": 340.0,
+        "Y": 762.51526
+      },
+      "GroupTitle": "Sun and sky",
+      "Description": "Set the sun along its 24-hour path. Scrub this value to study sunlight and twilight.",
+      "Min": 0.0,
+      "Max": 24.0,
+      "Scale": 0.05,
+      "ClampMin": true,
+      "ClampMax": true
+    },
+    {
+      "InputId": "5265e1ee-25de-5ed0-ad93-66f08941ff3f"/*CloudCover*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 25.0
+      },
+      "GroupTitle": "Clouds",
+      "Description": "Coverage from clear to overcast. This shifts the density threshold.",
+      "Min": 0.0,
+      "Max": 1.0,
+      "Scale": 0.005,
+      "ClampMin": true,
+      "ClampMax": true
+    },
+    {
+      "InputId": "5f2e0fd7-9218-5c47-948f-9302993acee9"/*EnvironmentExposure*/,
+      "Position": {
+        "X": 880.0,
+        "Y": 495.8525
+      },
+      "GroupTitle": "Lighting",
+      "Description": "Scale the image-based illumination captured by SetEnvironment.",
+      "Min": 0.0,
+      "Max": 2.0,
+      "Scale": 0.01,
+      "ClampMin": true,
+      "ClampMax": true
+    },
+    {
+      "InputId": "73363ae7-3c71-5975-8298-a94d164fb1eb"/*StratusBlend*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 121.0
+      },
+      "GroupTitle": "Clouds",
+      "Description": "Stratus layer opacity. Blend it with either of the other cloud types.",
+      "Min": 0.0,
+      "Max": 1.0,
+      "Scale": 0.01,
+      "ClampMin": true,
+      "ClampMax": true
+    },
+    {
+      "InputId": "7d16d7c8-7b7f-54a5-9b2b-92eed6474d64"/*StratusBaseKm*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 313.0
+      },
+      "GroupTitle": "Cloud heights",
+      "Description": "Low stratus base altitude above sea level, in kilometres.",
+      "Min": 0.15,
+      "Max": 1.15,
+      "Scale": 0.025,
+      "ClampMin": true,
+      "ClampMax": true
+    },
+    {
+      "InputId": "860882c3-8ada-58e0-aab6-77fbc3fe2784"/*WindDirection*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 518.0
+      },
+      "GroupTitle": "Wind",
+      "Description": "Signed X/Y direction in the cloud plane. Vector length also scales drift."
+    },
+    {
+      "InputId": "8bf4de51-446d-5a07-ae2b-351c53f8033b"/*CirrusBaseKm*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 409.0
+      },
+      "GroupTitle": "Cloud heights",
+      "Description": "Cirrus base altitude in kilometres. Kept above the cumulus layer.",
+      "Min": 5.25,
+      "Max": 12.0,
+      "Scale": 0.05,
+      "ClampMin": true,
+      "ClampMax": true
+    },
+    {
+      "InputId": "aadf7682-803b-5e67-9320-2df9e94b7f9d"/*CumulusBlend*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 73.0
+      },
+      "GroupTitle": "Clouds",
+      "Description": "Cumulus layer opacity. Blend it with either of the other cloud types.",
+      "Min": 0.0,
+      "Max": 1.0,
+      "Scale": 0.01,
+      "ClampMin": true,
+      "ClampMax": true
+    },
+    {
+      "InputId": "b123d18f-5a26-5792-8ca2-9d1f46e1739b"/*CumulusBaseKm*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 361.0
+      },
+      "GroupTitle": "Cloud heights",
+      "Description": "Cumulus base altitude in kilometres. Kept above the stratus layer.",
+      "Min": 1.2,
+      "Max": 4.0,
+      "Scale": 0.025,
+      "ClampMin": true,
+      "ClampMax": true
+    },
+    {
+      "InputId": "c12d2cc0-3412-5231-8e69-7358a8819c83"/*SunRadiance*/,
+      "Position": {
+        "X": 340.0,
+        "Y": 716.0
+      },
+      "GroupTitle": "Sun and sky",
+      "Description": "HDR intensity of the sun disc and direct illumination on the clouds.",
+      "Min": 0.0,
+      "Max": 42.0,
+      "Scale": 0.25,
+      "ClampMin": true,
+      "ClampMax": true
+    },
+    {
+      "InputId": "d27737c2-6dcf-5e81-a75d-2b3ac012ff2b"/*WindSpeed*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 470.0
+      },
+      "GroupTitle": "Wind",
+      "Description": "Drift speed in texture units per second. Zero freezes the cloud offset.",
+      "Min": 0.0,
+      "Max": 0.05,
+      "Scale": 0.0002,
+      "ClampMin": true,
+      "ClampMax": true
+    },
+    {
+      "InputId": "d65c8d21-624e-5fe1-adbf-6c1d7c44c691"/*CloudScale*/,
+      "Position": {
+        "X": 0.0,
+        "Y": 217.0
+      },
+      "GroupTitle": "Clouds",
+      "Description": "Pattern frequency. Higher values produce smaller formations.",
+      "Min": 2.0,
+      "Max": 24.0,
+      "Scale": 0.1,
+      "ClampMin": true,
+      "ClampMax": true
+    }
+  ],
+  "SymbolChildUis": [
+    {
+      "ChildId": "03233147-b9ae-5071-8a21-be22cfda15fd",
+      "SymbolName": "H445.Clouds_Basic.CloudPanorama",
+      "SectionId": "0a2db429-a320-51fe-bc38-66003abb1b01",
+      "Position": {
+        "X": 590.0,
+        "Y": 90.0
+      }
+    },
+    {
+      "ChildId": "0dd29f0b-69be-5816-adf2-64211f153672",
+      "SymbolName": "Lib.render.shading.SetEnvironment",
+      "SectionId": "c47e1144-1afd-5a6b-8167-6baff418e04d",
+      "Position": {
+        "X": 1145.0,
+        "Y": 385.0
+      }
+    },
+    {
+      "ChildId": "5c806287-ae3a-5493-81da-188f75593555",
+      "SymbolName": "H445.Clouds_Basic.SkyRendering",
+      "SectionId": "c47e1144-1afd-5a6b-8167-6baff418e04d",
+      "Position": {
+        "X": 875.0,
+        "Y": 180.0
+      }
+    },
+    {
+      "ChildId": "b3eb6123-ff10-54bd-8132-e10ff1b98a71",
+      "SymbolName": "Lib.flow.Execute",
+      "SectionId": "c47e1144-1afd-5a6b-8167-6baff418e04d",
+      "Position": {
+        "X": 1430.0,
+        "Y": 200.0
+      }
+    },
+    {
+      "ChildId": "eac3bb1f-f053-5cf8-a1d5-c14c0c0ae86c",
+      "SymbolName": "H445.Clouds_Basic.CloudMaps",
+      "Position": {
+        "X": 250.0,
+        "Y": 440.0
+      }
+    }
+  ],
+  "OutputUis": [
+    {
+      "OutputId": "9c4eff21-3ccb-5bed-b7b7-9186101ec4dd"/*Environment*/,
+      "Position": {
+        "X": 1660.0,
+        "Y": 200.0
+      }
+    }
+  ],
+  "Sections": [
+    {
+      "Id": "0a2db429-a320-51fe-bc38-66003abb1b01",
+      "Title": "02  HDR panorama",
+      "Color": {
+        "X": 0.52,
+        "Y": 0.66,
+        "Z": 0.78,
+        "W": 1.0
+      },
+      "Position": {
+        "X": 540.0,
+        "Y": 25.0
+      },
+      "Size": {
+        "X": 245.0,
+        "Y": 565.0
+      }
+    },
+    {
+      "Id": "a34f05b2-9374-588f-80c4-16a18d2de41c",
+      "Title": "01  Cloud controls",
+      "Color": {
+        "X": 0.52,
+        "Y": 0.66,
+        "Z": 0.78,
+        "W": 1.0
+      },
+      "Position": {
+        "X": -45.0,
+        "Y": -45.0
+      },
+      "Size": {
+        "X": 220.0,
+        "Y": 640.0
+      }
+    },
+    {
+      "Id": "c47e1144-1afd-5a6b-8167-6baff418e04d",
+      "Title": "03  Sky rendering and light",
+      "Color": {
+        "X": 0.52,
+        "Y": 0.66,
+        "Z": 0.78,
+        "W": 1.0
+      },
+      "Position": {
+        "X": 830.0,
+        "Y": 100.0
+      },
+      "Size": {
+        "X": 990.0,
+        "Y": 520.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "FormatVersion": 3,
+  "Id": "2650e132-6de9-47d5-bf8b-61a2d85806bb"/*Clouds_Basic*/,
+  "Description": "A tutorial starting point for volumetric clouds and HDR sunlight. Select Cloud Sky for controls.",
+  "InputUis": [],
+  "SymbolChildUis": [
+    {
+      "ChildId": "3072a310-b1ce-58e3-948b-29b69ddafcdf",
+      "SymbolName": "Lib.render.camera.Camera",
+      "Position": {
+        "X": 220.0,
+        "Y": 45.0
+      }
+    },
+    {
+      "ChildId": "4af4090e-7888-580e-b29e-8cb8fd632932",
+      "SymbolName": "Lib.image.color.ToneMapping",
+      "Position": {
+        "X": 880.0,
+        "Y": 45.0
+      }
+    },
+    {
+      "ChildId": "9243bb72-112c-56bb-97fd-34ec6b2f2ebf",
+      "SymbolName": "Lib.image.generate.basic.RenderTarget",
+      "Position": {
+        "X": 440.0,
+        "Y": 45.0
+      }
+    },
+    {
+      "ChildId": "ae9049d8-3619-568a-a00e-67a886428e08",
+      "SymbolName": "H445.Clouds_Basic.CloudSky",
+      "Position": {
+        "X": 0.0,
+        "Y": 45.0
+      }
+    },
+    {
+      "ChildId": "d7b1fe2e-9c8d-575a-b3c7-c4adac518809",
+      "SymbolName": "Lib.image.fx.blur.Bloom",
+      "Position": {
+        "X": 660.0,
+        "Y": 45.0
+      }
+    }
+  ],
+  "OutputUis": [
+    {
+      "OutputId": "a62a323f-9b56-5c77-8eb2-38cdc023531a"/*Sky*/,
+      "Position": {
+        "X": 1100.0,
+        "Y": 45.0
+      }
+    }
+  ],
+  "Settings": {
+    "OutputWindows": [
+      {
+  "ShowGizmos": "Off",
+  "TransformGizmoMode": "Move",
+  "BackgroundColor": [
+    0.1,
+    0.1,
+    0.1,
+    1.0
+  ],
+  "CameraControlMode": "AutoUseFirstCam",
+  "CameraPosition": [
+    0.0,
+    0.0,
+    1.5209091
+  ],
+  "CameraTarget": [
+    -0.08208847,
+    -0.075134315,
+    0.0040767635
+  ],
+  "CameraRoll": 0.0,
+  "CameraSpeed": 1.0,
+  "ResolutionTitle": "1080p",
+  "ResolutionWidth": 1920,
+  "ResolutionHeight": 1080,
+  "ResolutionUseAsAspectRatio": false,
+  "IsPinned": false,
+  "PinnedInstancePath": [],
+  "PinnedOutputId": "05c886f7-2c2c-4fe8-8b66-d6967dc43367",
+  "PinnedEntityKind": "None",
+  "PinnedEntityId": "00000000-0000-0000-0000-000000000000"
+}
+    ],
+    "WindowLayout": "[Window][Graph View##1]\nPos=201,26\nSize=589,991\nCollapsed=0\nDockId=0x00000003,0\n\n[Window][Variations]\nPos=1319,484\nSize=601,533\nCollapsed=0\nDockId=0x0000000A,0\n\n[Window][Output View##0]\nPos=792,26\nSize=1128,456\nCollapsed=0\nDockId=0x00000007,0\n\n[Window][Symbol Library]\nPos=0,26\nSize=199,627\nCollapsed=0\nDockId=0x0000000D,0\n\n[Window][Parameters##1]\nPos=792,484\nSize=525,533\nCollapsed=0\nDockId=0x00000009,0\n\n[Window][Assets]\nPos=0,655\nSize=199,362\nCollapsed=0\nDockId=0x0000000E,0\n\n[Window][Help]\nPos=1319,484\nSize=601,533\nCollapsed=0\nDockId=0x0000000A,1\n\n[Docking][Data]\nDockSpace         ID=0x08BD597D Window=0x1BBC0F80 Pos=0,26 Size=1920,991 Split=X Selected=0x8995E68A\n  DockNode        ID=0x0000000B Parent=0x08BD597D SizeRef=199,1391 Split=Y Selected=0x42C24103\n    DockNode      ID=0x0000000D Parent=0x0000000B SizeRef=549,881 HiddenTabBar=1 Selected=0xD41FC2E2\n    DockNode      ID=0x0000000E Parent=0x0000000B SizeRef=549,508 HiddenTabBar=1 Selected=0x42C24103\n  DockNode        ID=0x0000000C Parent=0x08BD597D SizeRef=3140,1391 Split=X\n    DockNode      ID=0x00000003 Parent=0x0000000C SizeRef=2010,1391 CentralNode=1 HiddenTabBar=1 Selected=0x8995E68A\n    DockNode      ID=0x00000004 Parent=0x0000000C SizeRef=1128,1391 Split=Y Selected=0xC9567BC1\n      DockNode    ID=0x00000007 Parent=0x00000004 SizeRef=916,641 HiddenTabBar=1 Selected=0xC9567BC1\n      DockNode    ID=0x00000008 Parent=0x00000004 SizeRef=916,748 Split=X Selected=0x35577784\n        DockNode  ID=0x00000009 Parent=0x00000008 SizeRef=525,446 HiddenTabBar=1 Selected=0x35577784\n        DockNode  ID=0x0000000A Parent=0x00000008 SizeRef=601,446 Selected=0x742F3B5B\n\n",
+    "WindowLayoutImGuiVersion": "1.91.6",
+    "WindowVisibility": {
+      "Variations": true,
+      "Output View##0": true,
+      "Graph View##0": false,
+      "Graph View##1": true,
+      "Parameters##1": true,
+      "Symbol Library": true,
+      "Assets": true,
+      "Variation Explorer": false,
+      "Render To File": false,
+      "IO Events": false,
+      "Performance": false,
+      "Help": true,
+      "Console": false,
+      "Utilities": false,
+      "Guided Feature Tests": false,
+      "Settings": false,
+      "Composition Settings": false,
+      "Welcome to the TiXL Alpha": false
+    }
+  }
+}
